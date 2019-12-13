@@ -1,4 +1,5 @@
 import pygame
+from random import choice
 
 
 class Maze(pygame.sprite.Sprite):
@@ -10,9 +11,14 @@ class Maze(pygame.sprite.Sprite):
         self.finish = (15, 15)
         self.items = []
         self.generate_maze(file)
+        self.item_at_random_location()
 
     def generate_maze(self, file):
-        """This method allows us to create a maze from a file in mazes's directory. """
+        """This method allows us to create a maze from a file in mazes's directory.
+
+        Args:
+            file: file containing maze structure's
+        """
 
         x = 0
         y = 0
@@ -28,8 +34,18 @@ class Maze(pygame.sprite.Sprite):
                         elif sprite == 'm':
                             self.wall.append((x, y))
                         else:
-                            self. finish = (x, y)
+                            self.finish = (x, y)
                     x += 1
                 y += 1
 
     def item_at_random_location(self):
+        """This method is set to find a random location for the three items. """
+
+        item_location = (0, 0)
+
+        while len(self.items) < 2:  # TODO: Have a look at random.choices
+            item_location = choice(self.path)
+            if item_location in self.items:
+                self.item_at_random_location()
+            else:
+                self.items.append(item_location)
