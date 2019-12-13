@@ -1,8 +1,10 @@
-import pygame
+"""
+This class is set to generate the maze from a file
+"""
 from random import choice
 
 
-class Maze(pygame.sprite.Sprite):
+class Maze:
     """This class reprensents the maze in the game. """
     def __init__(self, file):
         self.wall = []
@@ -23,7 +25,7 @@ class Maze(pygame.sprite.Sprite):
         x = 0
         y = 0
 
-        with open(file, 'r') as f:
+        with open(file, 'r'):
             for line in file:
                 for sprite in line:
                     if sprite != '\n':
