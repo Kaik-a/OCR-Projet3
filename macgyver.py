@@ -1,29 +1,30 @@
 """This module is set to implement MacGyver inside the maze"""
-import operator
-import config
+from operator import add
+from config import MACGYVER_PICTURE
+from maze import Maze
 
 
 class MacGyver:
     """This class is set to represent our hero, macguyver, his methods and
      attributes. """
-    def __init__(self, maze):
+    def __init__(self):
         self.position = (0, 0)
         self.item_count = 0
-        self.picture = config.MACGYVER_PICTURE
-        self.maze = maze
+        self.picture = MACGYVER_PICTURE
 
-    def move(self, direction: str):
+    def move(self, direction: str, maze: Maze):
         """This methods gives the ability to MacGyver to move inside the maze.
 
         Args:
             direction: the direction where MacGyver is trying to move
+            maze: the maze from where MacGyver is trying to escape
         """
 
         def set_position(try_move: tuple):
             """If try_move is in accepted paths, we define the new position of
             McaGyver"""
-            new_position = tuple(map(operator.add, self.position, try_move))
-            if new_position in self.maze.path:
+            new_position = tuple(map(add, self.position, try_move))
+            if new_position in maze.path:
                 self.position = new_position
 
         if direction == 'up':
@@ -39,9 +40,13 @@ class MacGyver:
             move = (1, 0)
             set_position(move)
 
-    def get_items(self):
+    def get_items(self, maze: Maze):
         """When MacGyver arrives in a new position, we verify if there's not an
-        item on it"""
-        if self.position in self.maze.items:
+        item on it
+
+        Args:
+            maze: the maze from where MacGyver is trying to escape
+        """
+        if self.position in maze.items:
             self.item_count += 1
-            self.maze.items.remove(self.position)
+            maze.items.remove(self.position)
