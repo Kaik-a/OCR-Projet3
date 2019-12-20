@@ -16,10 +16,18 @@ class Maze:
         self.item_at_random_location()
 
     def generate_maze(self, file):
-        """This method allows us to create a maze from a file in mazes's directory.
+        """This method allows us to create a maze from a file located in mazes's
+        directory.
 
         Args:
             file: file containing maze structure's
+
+        In file:
+            s: start
+            w: wall
+            0: path
+            g: guardian
+            f: finish
         """
 
         x = 0
@@ -29,11 +37,11 @@ class Maze:
             for line in file:
                 for sprite in line:
                     if sprite != '\n':
-                        if sprite == 'd':
+                        if sprite == 's':
                             self.start = (x, y)
                         elif sprite == '0':
                             self.path.append((x, y))
-                        elif sprite == 'm':
+                        elif sprite == 'w':
                             self.wall.append((x, y))
                         else:
                             self.finish = (x, y)

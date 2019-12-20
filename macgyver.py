@@ -4,7 +4,8 @@ import config
 
 
 class MacGyver:
-    """This class is set to represent our hero, macguyver, his methods and attributes. """
+    """This class is set to represent our hero, macguyver, his methods and
+     attributes. """
     def __init__(self, maze):
         self.position = (0, 0)
         self.item_count = 0
