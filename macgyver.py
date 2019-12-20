@@ -22,12 +22,22 @@ class MacGyver:
         if direction == 'up':
             move = (0, 1)
             new_position = tuple(map(operator.add, self.position, move))
-            if new_position not in self.maze.wall:
+            if new_position in self.maze.path:
                 self.position = new_position
-            # TODO: implement the out of the box
         elif direction == 'down':
-            pass
+            move = (0, -1)
+            new_position = tuple(map(operator.add, self.position, move))
+            if new_position in self.maze.path:
+                self.position : new_position
         elif direction == 'left':
-            pass
+            move = (-1, 0)
+            new_position = (tuple(map(operator.add, self.position, move)))
+            if new_position in self.maze.path:
+                self.position = new_position
         elif direction == 'right':
-            pass
+            move = (1, 0)
+            new_position = tuple(map(operator.add, self.position, move))
+            if new_position in self.maze.path:
+                self.position = new_position
+
+    
