@@ -27,26 +27,25 @@ class MacGyver:
             if new_position in maze.path:
                 self.position = new_position
 
+        def get_items():
+            """When MacGyver arrives in a new position, we verify if there's not
+            an item on it
+            """
+            if self.position in maze.items:
+                self.item_count += 1
+                maze.items.remove(self.position)
+
         if direction == 'up':
             move = (0, -1)
-            set_position(move)
         elif direction == 'down':
             move = (0, 1)
-            set_position(move)
         elif direction == 'left':
             move = (-1, 0)
-            set_position(move)
         elif direction == 'right':
             move = (1, 0)
-            set_position(move)
 
-    def get_items(self, maze: Maze):
-        """When MacGyver arrives in a new position, we verify if there's not an
-        item on it
+        set_position(move)
+        get_items()
 
-        Args:
-            maze: the maze from where MacGyver is trying to escape
-        """
-        if self.position in maze.items:
-            self.item_count += 1
-            maze.items.remove(self.position)
+
+
