@@ -27,10 +27,10 @@ class MacGyver:
                 self.position = new_position
 
         if direction == 'up':
-            move = (0, 1)
+            move = (0, -1)
             set_position(move)
         elif direction == 'down':
-            move = (0, -1)
+            move = (0, 1)
             set_position(move)
         elif direction == 'left':
             move = (-1, 0)
@@ -38,3 +38,10 @@ class MacGyver:
         elif direction == 'right':
             move = (1, 0)
             set_position(move)
+
+    def get_items(self):
+        """When MacGyver arrives in a new position, we verify if there's not an
+        item on it"""
+        if self.position in self.maze.items:
+            self.item_count += 1
+            self.maze.items.remove(self.position)

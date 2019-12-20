@@ -51,8 +51,6 @@ class Maze:
     def item_at_random_location(self):
         """This method is set to find a random location for the three items. """
 
-        item_location = (0, 0)
-
         while len(self.items) < 2:  # TODO: Have a look at random.choices
             item_location = choice(self.path)
             if item_location in self.items:
