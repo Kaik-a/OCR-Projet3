@@ -20,6 +20,8 @@ class MacGyver:
             maze: the maze from where MacGyver is trying to escape
         """
 
+        move = (0, 0)
+
         def set_position(try_move: tuple):
             """If try_move is in accepted paths, we define the new position of
             McaGyver"""
