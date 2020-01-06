@@ -10,7 +10,9 @@ import pygame
 class Guardian(pygame.sprite.Sprite):
     def __init__(self, position: tuple):
         pygame.sprite.Sprite.__init__(self)
-        self.picture = pygame.image.load(GUARDIAN_PICTURE).convert()
+        self.picture = pygame.transform.scale(pygame.image.
+                                              load(GUARDIAN_PICTURE).convert(),
+                                              (20, 20))
         self.position = position
 
     @staticmethod

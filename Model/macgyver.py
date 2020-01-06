@@ -12,7 +12,9 @@ class MacGyver(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.position = position
         self.item_count = 0
-        self.picture = pygame.image.load(MACGYVER_PICTURE).convert()
+        self.picture = pygame.transform.scale(pygame.image.
+                                              load(MACGYVER_PICTURE).convert(),
+                                              (20, 20))
 
     def move(self, direction: str, maze: Maze):
         """This methods gives the ability to MacGyver to move inside the maze.
