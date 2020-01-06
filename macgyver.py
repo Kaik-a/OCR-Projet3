@@ -2,15 +2,17 @@
 from operator import add
 from config import MACGYVER_PICTURE
 from maze import Maze
+import pygame
 
 
-class MacGyver:
+class MacGyver(pygame.sprite.Sprite):
     """This class is set to represent our hero, macguyver, his methods and
      attributes. """
     def __init__(self, position):
+        pygame.sprite.Sprite.__init__(self)
         self.position = position
         self.item_count = 0
-        self.picture = MACGYVER_PICTURE
+        self.picture = pygame.image.load(MACGYVER_PICTURE).convert()
 
     def move(self, direction: str, maze: Maze):
         """This methods gives the ability to MacGyver to move inside the maze.

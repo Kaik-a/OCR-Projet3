@@ -4,11 +4,13 @@ the maze"""
 
 from config import GUARDIAN_PICTURE
 from macgyver import MacGyver
+import pygame
 
 
-class Guardian:
+class Guardian(pygame.sprite.Sprite):
     def __init__(self, position: tuple):
-        self.picture = GUARDIAN_PICTURE
+        pygame.sprite.Sprite.__init__(self)
+        self.picture = pygame.image.load(GUARDIAN_PICTURE).convert()
         self.position = position
 
     @staticmethod

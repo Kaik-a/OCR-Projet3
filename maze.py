@@ -1,12 +1,14 @@
 """
 This class is set to generate the maze from a file
 """
+import pygame
 from random import choice
 
 
-class Maze:
+class Maze(pygame.sprite.Sprite):
     """This class reprensents the maze in the game. """
     def __init__(self, file):
+        pygame.sprite.Sprite.__init__(self)
         self.wall = []
         self.path = []
         self.start = (0, 0)
