@@ -14,7 +14,7 @@ class Guardian:
     @staticmethod
     def block_exit(macgyver: MacGyver):
         """If MacGyver go all items from maze he can sleep the guardian and go
-        through exit, otherwise the guardian knock out him"""
+        through exit, otherwise the guardian knock him out"""
         if macgyver.item_count == 2:
             print("What's happening to me!? Hugh... \n "
                   "The guardian felt asleep")
