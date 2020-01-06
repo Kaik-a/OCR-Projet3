@@ -7,8 +7,8 @@ from maze import Maze
 class MacGyver:
     """This class is set to represent our hero, macguyver, his methods and
      attributes. """
-    def __init__(self):
-        self.position = (0, 0)
+    def __init__(self, position):
+        self.position = position
         self.item_count = 0
         self.picture = MACGYVER_PICTURE
 
@@ -26,8 +26,16 @@ class MacGyver:
             """If try_move is in accepted paths, we define the new position of
             McaGyver"""
             new_position = tuple(map(add, self.position, try_move))
-            if new_position in maze.path:
+            if (new_position in maze.path) or (new_position == maze.guardian):
                 self.position = new_position
+
+        def get_items():
+            """When MacGyver arrives in a new position, we verify if there's
+            not an item on it
+            """
+            if self.position in maze.items:
+                self.item_count += 1
+                maze.items.remove(self.position)
 
         if direction == 'up':
             move = (0, -1)
@@ -39,14 +47,6 @@ class MacGyver:
             move = (1, 0)
 
         set_position(move)
+        get_items()
 
-    def get_items(self, maze: Maze):
-        """When MacGyver arrives in a new position, we verify if there's not an
-        item on it
 
-        Args:
-            maze: the maze from where MacGyver is trying to escape
-        """
-        if self.position in maze.items:
-            self.item_count += 1
-            maze.items.remove(self.position)

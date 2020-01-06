@@ -4,18 +4,22 @@ instance of a maze and a macgyver"""
 from macgyver import MacGyver
 from maze import Maze
 from guardian import Guardian
+from config import DEFAULT_FILE, RIP_PICTURE
 
 
 class Level:
-    def __init__(self, guardian: Guardian, macgyver: MacGyver, maze: Maze):
-        self.guardian = guardian
-        self.macgyver = macgyver
-        self.maze = maze
+    def __init__(self):
+        self.maze = Maze(DEFAULT_FILE)
+        self.guardian = Guardian(self.maze.guardian)
+        self.macgyver = MacGyver(self.maze.start)
 
-    def victory(self):
-        pass
+    def result(self, showdown: str):
+        if showdown == 'victory':
+            self.macgyver.position = self.maze.finish
+            self.guardian.picture = RIP_PICTURE
+            print("You're finally out from the maze!!! Gratz!!!")
+        elif showdown == 'fail':
+            print("You died...")
 
-    def fail(self):
-        pass
 
 

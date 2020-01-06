@@ -1,7 +1,8 @@
 """
 File containing all configurations for the game
 """
-import pygame
 
-GUARDIAN_PICTURE = pygame.image.load('ressource/Images/Gardien.png').convert()
-MACGYVER_PICTURE = pygame.image.load('ressource/Images/MacGyver.png').convert()
+DEFAULT_FILE = 'ressource/Mazes/main'
+GUARDIAN_PICTURE = 'ressource/Images/Gardien.png'
+MACGYVER_PICTURE = 'ressource/Images/MacGyver.png'
+RIP_PICTURE = 'ressource/Images/RIP.svg'

@@ -10,7 +10,8 @@ class Maze:
         self.wall = []
         self.path = []
         self.start = (0, 0)
-        self.finish = (15, 15)
+        self.guardian = (0, 0)
+        self.finish = (0, 0)
         self.items = []
         self.generate_maze(file)
         self.item_at_random_location()
@@ -33,8 +34,8 @@ class Maze:
         x = 0
         y = 0
 
-        with open(file, 'r'):
-            for line in file:
+        with open(file, 'r')as maze:
+            for line in maze:
                 for sprite in line:
                     if sprite != '\n':
                         if sprite == 's':
@@ -43,15 +44,18 @@ class Maze:
                             self.path.append((x, y))
                         elif sprite == 'w':
                             self.wall.append((x, y))
+                        elif sprite == 'g':
+                            self.guardian = (x, y)
                         else:
                             self.finish = (x, y)
                     x += 1
+                x = 0
                 y += 1
 
     def item_at_random_location(self):
         """This method is set to find a random location for the three items. """
 
-        while len(self.items) < 2:  # TODO: Have a look at random.choices
+        while len(self.items) < 3:  # TODO: Have a look at random.choices
             item_location = choice(self.path)
             if item_location in self.items:
                 self.item_at_random_location()

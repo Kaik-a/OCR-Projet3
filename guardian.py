@@ -7,15 +7,15 @@ from macgyver import MacGyver
 
 
 class Guardian:
-    def __init__(self):
+    def __init__(self, position: tuple):
         self.picture = GUARDIAN_PICTURE
-        self.position = (14, 15)
+        self.position = position
 
     @staticmethod
     def block_exit(macgyver: MacGyver):
         """If MacGyver go all items from maze he can sleep the guardian and go
         through exit, otherwise the guardian knock him out"""
-        if macgyver.item_count == 2:
+        if macgyver.item_count == 3:
             print("What's happening to me!? Hugh... \n "
                   "The guardian felt asleep")
             return "victory"
