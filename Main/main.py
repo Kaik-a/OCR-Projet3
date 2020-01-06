@@ -1,8 +1,7 @@
 """File to launch in order to play MacGyver's maze game"""
 
-from level import Level
+from Model.level import Level
 import pygame
-from pygame.locals import *
 
 
 def main():

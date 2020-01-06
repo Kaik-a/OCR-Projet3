@@ -1,7 +1,7 @@
 """This module is set to implement MacGyver inside the maze"""
 from operator import add
 from config import MACGYVER_PICTURE
-from maze import Maze
+from Model.maze import Maze
 import pygame
 
 

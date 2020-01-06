@@ -1,9 +1,9 @@
 """In order to play the game, a level is created taking in parameters an
 instance of a maze and a macgyver"""
 
-from macgyver import MacGyver
-from maze import Maze
-from guardian import Guardian
+from Model.macgyver import MacGyver
+from Model.maze import Maze
+from Model.guardian import Guardian
 from config import DEFAULT_FILE, RIP_PICTURE
 
 

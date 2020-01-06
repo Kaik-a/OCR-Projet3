@@ -3,7 +3,7 @@ MacGyver to go through the exit if he doesn't have the three items hidden inside
 the maze"""
 
 from config import GUARDIAN_PICTURE
-from macgyver import MacGyver
+from Model.macgyver import MacGyver
 import pygame
 
 
