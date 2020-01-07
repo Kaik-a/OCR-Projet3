@@ -1,9 +1,13 @@
+"""
+Module to realize the display of the maze
+"""
 import pygame
 from Model.maze import Maze
 from config import SPRITE_SHEET
 
 
 def create_maze_view(maze: Maze, window: pygame.display.set_mode()):
+    """Make pygame visual for the maze."""
     sprite_sheet = pygame.image.load(SPRITE_SHEET)
     # load sprite image for walls
     sprite_sheet.set_clip(pygame.Rect(40, 0, 20, 20))

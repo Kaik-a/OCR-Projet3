@@ -1,13 +1,14 @@
-"""File to launch in order to play MacGyver's maze game"""
+"""File to launch in order to play MacGyver's maze game."""
 
-from Model.level import Level
-from config import WINDOW_SIZE, MACGYVER_PICTURE, WINDOW_TITLE
-from View.maze_view import create_maze_view
 import pygame
 from pygame.locals import *
+from Model.level import Level
+from View.maze_view import create_maze_view
+from config import WINDOW_SIZE, MACGYVER_PICTURE, WINDOW_TITLE
 
 
 def main():
+    """Launch the game."""
     pygame.init()
     window = pygame.display.set_mode((WINDOW_SIZE, WINDOW_SIZE))
 

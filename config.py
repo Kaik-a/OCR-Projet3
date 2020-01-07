@@ -1,5 +1,5 @@
 """
-File containing all configurations for the game
+File containing all configurations for the game.
 """
 
 DEFAULT_FILE = 'ressource/Mazes/main'
