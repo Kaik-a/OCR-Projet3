@@ -23,5 +23,8 @@ def create_maze_view(maze: Maze, window: pygame.display.set_mode()):
         window.blit(wall_sprite, wall)
     for path in maze.path:
         window.blit(path_sprite, path)
-    for finish in maze.finish:
-        window.blit(finish_sprite, finish)
+    for item in maze.items:
+        window.blit(item.picture, item.position)
+
+    window.blit(path_sprite, maze.guardian)
+    window.blit(finish_sprite, maze.finish)

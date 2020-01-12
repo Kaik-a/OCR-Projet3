@@ -1,7 +1,7 @@
 """This module is set to implement MacGyver inside the maze."""
 from operator import add
 import pygame
-from config import MACGYVER_PICTURE
+from config import MACGYVER_PICTURE, SPRITE_SIZE
 from Model.maze import Maze
 
 
@@ -43,18 +43,18 @@ class MacGyver(pygame.sprite.Sprite):
             When MacGyver arrives in a new position, we verify if there's
             not an item on it.
             """
-            if self.position in maze.items:
-                self.item_count += 1
-                maze.items.remove(self.position)
+            for item in maze.items:
+                if self.position == item.position:
+                    self.item_count += 1
+                    maze.items.remove(item)
 
         if direction == 'up':
-            move = (0, -1)
+            move = (0, -SPRITE_SIZE)
         elif direction == 'down':
-            move = (0, 1)
+            move = (0, SPRITE_SIZE)
         elif direction == 'left':
-            move = (-1, 0)
+            move = (-SPRITE_SIZE, 0)
         elif direction == 'right':
-            move = (1, 0)
-
+            move = (SPRITE_SIZE, 0)
         set_position(move)
         get_items()

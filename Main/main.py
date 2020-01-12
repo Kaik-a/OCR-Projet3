@@ -31,15 +31,16 @@ def main():
                     principal_loop = False
                 elif event.type == KEYDOWN:
                     if event.key == K_RIGHT:
-                        level.macgyver.move('right')
+                        level.macgyver.move('right', level.maze)
                     elif event.key == K_LEFT:
-                        level.macgyver.move('left')
+                        level.macgyver.move('left', level.maze)
                     elif event.key == K_DOWN:
-                        level.macgyver.move('down')
+                        level.macgyver.move('down', level.maze)
                     elif event.key == K_UP:
-                        level.macgyver.move('up')
+                        level.macgyver.move('up', level.maze)
 
                 create_maze_view(level.maze, window)
+                window.blit(level.guardian.picture, level.guardian.position)
                 window.blit(level.macgyver.picture, level.macgyver.position)
 
                 pygame.display.flip()
