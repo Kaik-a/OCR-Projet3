@@ -3,6 +3,8 @@ This class is set to generate the maze from a file
 """
 import pygame
 from random import choice
+from Model.item import Item
+from config import ETHER_PICTURE, SPRITE_SIZE, SYRINGE_PICTURE, TUBE_PICTURE
 
 
 class Maze(pygame.sprite.Sprite):
@@ -42,24 +44,33 @@ class Maze(pygame.sprite.Sprite):
                     if sprite != '\n':
                         if sprite == 's':
                             self.start = (x, y)
+                            self.path.append((x, y))
                         elif sprite == '0':
                             self.path.append((x, y))
                         elif sprite == 'w':
                             self.wall.append((x, y))
                         elif sprite == 'g':
                             self.guardian = (x, y)
-                        else:
+                        elif sprite == 'f':
                             self.finish = (x, y)
-                    x += 1
+                    x += SPRITE_SIZE
                 x = 0
-                y += 1
+                y += SPRITE_SIZE
 
     def item_at_random_location(self):
         """This method is set to find a random location for the three items. """
+
+        item_pictures = [ETHER_PICTURE, SYRINGE_PICTURE, TUBE_PICTURE]
 
         while len(self.items) < 3:  # TODO: Have a look at random.choices
             item_location = choice(self.path)
             if item_location in self.items:
                 self.item_at_random_location()
             else:
-                self.items.append(item_location)
+                self.items.append(Item(item_location))
+
+        for item in self.items:
+            item.picture = pygame.transform.scale(pygame.image.load
+                                                  (item_pictures.pop()),
+                                                  (20, 20))
+
