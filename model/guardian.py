@@ -5,7 +5,8 @@ the maze
 """
 
 import pygame
-from Model.macgyver import MacGyver
+from model.macgyver import MacGyver
+from view.image_loading import load_image
 from config import GUARDIAN_PICTURE
 
 
@@ -13,9 +14,7 @@ class Guardian(pygame.sprite.Sprite):
     """The guardian is here to protect the exit of the maze."""
     def __init__(self, position: tuple):
         pygame.sprite.Sprite.__init__(self)
-        self.picture = pygame.transform.scale(pygame.image.
-                                              load(GUARDIAN_PICTURE).convert(),
-                                              (20, 20))
+        self.picture = load_image(GUARDIAN_PICTURE)
         self.position = position
 
     @staticmethod

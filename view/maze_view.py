@@ -2,7 +2,7 @@
 Module to realize the display of the maze
 """
 import pygame
-from Model.maze import Maze
+from model.maze import Maze
 from config import SPRITE_SHEET
 
 

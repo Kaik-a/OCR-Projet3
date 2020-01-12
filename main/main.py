@@ -2,8 +2,8 @@
 
 import pygame
 from pygame.locals import *
-from Model.level import Level
-from View.maze_view import create_maze_view
+from model.level import Level
+from view.maze_view import create_maze_view
 from config import WINDOW_SIZE, MACGYVER_PICTURE, WINDOW_TITLE
 
 

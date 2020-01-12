@@ -2,7 +2,8 @@
 from operator import add
 import pygame
 from config import MACGYVER_PICTURE, SPRITE_SIZE
-from Model.maze import Maze
+from view.image_loading import load_image
+from model.maze import Maze
 
 
 class MacGyver(pygame.sprite.Sprite):
@@ -14,9 +15,7 @@ class MacGyver(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.position = position
         self.item_count = 0
-        self.picture = pygame.transform.scale(pygame.image.
-                                              load(MACGYVER_PICTURE).convert(),
-                                              (20, 20))
+        self.picture = load_image(MACGYVER_PICTURE)
 
     def move(self, direction: str, maze: Maze):
         """

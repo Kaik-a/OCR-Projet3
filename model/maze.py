@@ -3,7 +3,8 @@ This class is set to generate the maze from a file
 """
 import pygame
 from random import choice
-from Model.item import Item
+from model.item import Item
+from view.image_loading import load_image
 from config import ETHER_PICTURE, SPRITE_SIZE, SYRINGE_PICTURE, TUBE_PICTURE
 
 
@@ -70,7 +71,5 @@ class Maze(pygame.sprite.Sprite):
                 self.items.append(Item(item_location))
 
         for item in self.items:
-            item.picture = pygame.transform.scale(pygame.image.load
-                                                  (item_pictures.pop()),
-                                                  (20, 20))
+            item.picture = load_image(item_pictures.pop())
 
