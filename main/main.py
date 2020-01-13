@@ -10,6 +10,8 @@ from config import WINDOW_SIZE, MACGYVER_PICTURE, WINDOW_TITLE
 
 chdir('..')
 
+# TODO: Check python path for main and tests
+
 
 def main():
     """Launch the game."""
@@ -39,21 +41,23 @@ def main():
                 elif event.key == K_UP:
                     level.macgyver.move('up', level.maze)
 
+            if level.macgyver.position == level.maze.finish:
+                return
+
+            if level.macgyver.position == level.guardian.position:
+                showdown = level.guardian.block_exit(level.macgyver)
+                level.result(showdown)
+                if showdown == 'fail':
+                    return
+
             create_maze_view(level.maze, window)
+
             window.blit(level.guardian.picture, level.guardian.position)
             window.blit(level.macgyver.picture, level.macgyver.position)
 
             pygame.display.flip()
 
-            if level.macgyver.position == level.guardian.position:
-                showdown = level.guardian.block_exit(level.macgyver)
-                level.result(showdown)
-
-            if level.macgyver.position == level.maze.finish:
-                sleep(5)
-                return
-
-
 
 if __name__ == "__main__":
     main()
+    sleep(5)

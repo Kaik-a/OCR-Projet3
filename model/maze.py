@@ -65,10 +65,13 @@ class Maze(pygame.sprite.Sprite):
 
         while len(self.items) < 3:  # TODO: Have a look at random.choices
             item_location = choice(self.path)
-            if item_location in self.items:
-                self.item_at_random_location()
-            else:
-                self.items.append(Item(item_location))
+            for item in self.items:
+                if (item_location in item.position or
+                        item_location in self.guardian or
+                        item_location in self.start):
+                    self.item_at_random_location()
+                else:
+                    self.items.append(Item(item_location))
 
         for item in self.items:
             item.picture = load_image(item_pictures.pop())
