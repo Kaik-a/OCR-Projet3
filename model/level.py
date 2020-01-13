@@ -17,7 +17,7 @@ class Level:
 
     def result(self, showdown: str):
         if showdown == 'victory':
-            self.macgyver.position = self.maze.finish
+            #self.macgyver.position = self.maze.finish
             self.guardian.picture = load_image(RIP_PICTURE)
             print("You're finally out from the maze!!! Gratz!!!")
         elif showdown == 'fail':

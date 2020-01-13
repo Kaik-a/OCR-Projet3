@@ -1,18 +1,39 @@
 """test for macgyver's method move. """
 
-from os import chdir
-from unittest import mock
 from model.macgyver import MacGyver
 from tests.fixture import fixture
+from config import SPRITE_SIZE
 
 fixture()
 
-with mock.patch('model.maze') as mock:
-    maze = mock.return_value
-    maze.path = [(20, 20), (20, 40), (20, 60)]
 
-    macgyver = MacGyver((0, 0))
+def test_move():
+    from unittest import mock
+    with mock.patch('model.maze') as mock:
+        maze = mock.return_value
+        maze.path = [(0, 0),
+                     (SPRITE_SIZE, 0),
+                     (0, SPRITE_SIZE),
+                     (SPRITE_SIZE, SPRITE_SIZE)]
 
-    macgyver.move('right', maze)
+        macgyver = MacGyver((0, 0))
 
-    assert macgyver.position == '(1, 1)'
+        macgyver.move('right', maze)
+
+        assert macgyver.position == (SPRITE_SIZE, 0)
+
+        macgyver.move('left', maze)
+
+        assert macgyver.position == (0, 0)
+
+        macgyver.move('down', maze)
+
+        assert macgyver.position == (0, SPRITE_SIZE)
+
+        macgyver.move('up', maze)
+
+        assert macgyver.position == (0, 0)
+
+        macgyver.move('up', maze)
+
+        assert macgyver.position == (0, 0)
