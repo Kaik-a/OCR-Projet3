@@ -7,7 +7,7 @@ from time import sleep
 from model.level import Level
 from view.maze_view import create_maze_view
 from view.item_count_display import display_item_count
-from config import WINDOW_SIZE, MACGYVER_PICTURE, WINDOW_TITLE
+from config import WINDOW_SIZE, MACGYVER_PICTURE, WINDOW_TITLE, WIN_PICTURE, FAIL_PICTURE
 
 chdir('..')
 
@@ -25,10 +25,10 @@ def main():
     pygame.display.set_caption(WINDOW_TITLE)
 
     level = Level()
+    showdown = ''
 
     while 1:
         pygame.time.Clock().tick(30)
-
         for event in pygame.event.get():
             if event.type == QUIT:
                 return
@@ -42,14 +42,12 @@ def main():
                 elif event.key == K_UP:
                     level.macgyver.move('up', level.maze)
 
-            if level.macgyver.position == level.maze.finish:
+            if showdown:
                 return
 
             if level.macgyver.position == level.guardian.position:
                 showdown = level.guardian.block_exit(level.macgyver)
                 level.result(showdown)
-                if showdown == 'fail':
-                    return
 
             create_maze_view(level.maze, window)
 
