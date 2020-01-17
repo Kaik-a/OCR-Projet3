@@ -21,7 +21,7 @@ class Guardian(pygame.sprite.Sprite):
     def block_exit(macgyver: MacGyver):
         """
         If MacGyver get all items from maze he can sleep the guardian and go
-        through exit, otherwise the guardian knock him out
+        through exit, otherwise the guardian kill him
         """
         if macgyver.item_count == 3:
             return "victory"

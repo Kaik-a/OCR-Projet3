@@ -1,13 +1,15 @@
 """File to launch in order to play MacGyver's maze game."""
 
 from os import chdir
+
 import pygame
 from pygame.locals import *
 from time import sleep
+
+from config import WINDOW_SIZE, MACGYVER_PICTURE, WINDOW_TITLE
 from model.level import Level
 from view.maze_view import create_maze_view
 from view.item_count_display import display_item_count
-from config import WINDOW_SIZE, MACGYVER_PICTURE, WINDOW_TITLE, WIN_PICTURE, FAIL_PICTURE
 
 chdir('..')
 
