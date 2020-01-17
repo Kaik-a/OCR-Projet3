@@ -20,7 +20,7 @@ class Guardian(pygame.sprite.Sprite):
     @staticmethod
     def block_exit(macgyver: MacGyver):
         """
-        If MacGyver go all items from maze he can sleep the guardian and go
+        If MacGyver get all items from maze he can sleep the guardian and go
         through exit, otherwise the guardian knock him out
         """
         if macgyver.item_count == 3:

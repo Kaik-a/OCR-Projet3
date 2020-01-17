@@ -6,6 +6,7 @@ from pygame.locals import *
 from time import sleep
 from model.level import Level
 from view.maze_view import create_maze_view
+from view.item_count_display import display_item_count
 from config import WINDOW_SIZE, MACGYVER_PICTURE, WINDOW_TITLE
 
 chdir('..')
@@ -54,6 +55,8 @@ def main():
 
             window.blit(level.guardian.picture, level.guardian.position)
             window.blit(level.macgyver.picture, level.macgyver.position)
+
+            display_item_count(window, level)
 
             pygame.display.flip()
 
