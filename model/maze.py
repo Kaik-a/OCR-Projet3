@@ -10,6 +10,7 @@ from config import ETHER_PICTURE, SPRITE_SIZE, SYRINGE_PICTURE, TUBE_PICTURE
 
 class Maze(pygame.sprite.Sprite):
     """This class reprensents the maze in the game. """
+
     def __init__(self, file):
         pygame.sprite.Sprite.__init__(self)
         self.wall = []
@@ -19,7 +20,8 @@ class Maze(pygame.sprite.Sprite):
         self.finish = (0, 0)
         self.items = []
         self.generate_maze(file)
-        self.item_at_random_location()
+        while len(self.items) < 3:
+            self.item_at_random_location()
 
     def generate_maze(self, file):
         """This method allows us to create a maze from a file located in mazes's
@@ -63,16 +65,21 @@ class Maze(pygame.sprite.Sprite):
 
         item_pictures = [ETHER_PICTURE, SYRINGE_PICTURE, TUBE_PICTURE]
 
-        while len(self.items) < 3:  # TODO: Have a look at random.choices
-            item_location = choice(self.path)
-            for item in self.items:
-                if (item_location in item.position or
-                        item_location in self.guardian or
-                        item_location in self.start):
-                    self.item_at_random_location()
-                else:
-                    self.items.append(Item(item_location))
+        item_location = choice(self.path)
+        # we avoid start and guardian location
+        if (item_location in self.guardian or
+                item_location in self.start):
+            self.item_at_random_location()
+        else:
+            if self.items:
+                # we avoid other item position
+                for item in self.items:
+                    if item_location in item.position:
+                        self.item_at_random_location()
+                self.items.append(Item(item_location))
+            else:
+                self.items.append(Item(item_location))
 
+        # we load an image for each item in list
         for item in self.items:
             item.picture = load_image(item_pictures.pop())
-
