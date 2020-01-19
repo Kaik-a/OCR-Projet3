@@ -2,7 +2,8 @@
 from operator import add
 import pygame
 from config import MACGYVER_PICTURE, SPRITE_SIZE
-from Model.maze import Maze
+from view.image_loading import load_image
+from model.maze import Maze
 
 
 class MacGyver(pygame.sprite.Sprite):
@@ -10,13 +11,12 @@ class MacGyver(pygame.sprite.Sprite):
     This class is set to represent our hero, macguyver, his methods and
     attributes.
     """
+
     def __init__(self, position):
         pygame.sprite.Sprite.__init__(self)
         self.position = position
         self.item_count = 0
-        self.picture = pygame.transform.scale(pygame.image.
-                                              load(MACGYVER_PICTURE).convert(),
-                                              (20, 20))
+        self.picture = load_image(MACGYVER_PICTURE)
 
     def move(self, direction: str, maze: Maze):
         """
@@ -35,7 +35,9 @@ class MacGyver(pygame.sprite.Sprite):
             McaGyver.
             """
             new_position = tuple(map(add, self.position, try_move))
-            if (new_position in maze.path) or (new_position == maze.guardian):
+            if (new_position in maze.path
+                    or new_position == maze.guardian
+                    or new_position in maze.finish):
                 self.position = new_position
 
         def get_items():
@@ -56,5 +58,6 @@ class MacGyver(pygame.sprite.Sprite):
             move = (-SPRITE_SIZE, 0)
         elif direction == 'right':
             move = (SPRITE_SIZE, 0)
+
         set_position(move)
         get_items()
