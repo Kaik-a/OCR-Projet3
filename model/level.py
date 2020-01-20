@@ -12,7 +12,7 @@ from view.image_loading import load_image
 class Level:
     """Main class of the game who permits to link maze, macgyver and guardian"""
     def __init__(self):
-        self.maze = Maze(config.DEFAULT_FILE)
+        self.maze = Maze(file=config.DEFAULT_FILE)
         self.guardian = GameObject(picture=config.GUARDIAN_PICTURE,
                                    position=self.maze.guardian)
         self.macgyver = MacGyver(picture=config.MACGYVER_PICTURE,
