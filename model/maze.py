@@ -12,7 +12,8 @@ from model.game_object import GameObject
 
 item_pictures = [config.ETHER_PICTURE,
                  config.SYRINGE_PICTURE,
-                 config.TUBE_PICTURE]
+                 config.TUBE_PICTURE,
+                 config.NEEDLE_PICTURE]
 
 
 class Maze(sprite.Sprite):
@@ -75,12 +76,14 @@ class Maze(sprite.Sprite):
         if (item_location in self.guardian or
                 item_location in self.start):
             self.item_at_random_location()
+            return
         else:
             if self.items:
                 # we avoid other items position
                 for item in self.items:
                     if item_location in item.position:
                         self.item_at_random_location()
+                        return
                 self.items.append(GameObject
                                   (picture=item_pictures[len(self.items)],
                                    position=item_location))
