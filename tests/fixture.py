@@ -5,6 +5,7 @@ import pygame
 
 
 def fixture():
+    """Set up environment to test"""
     chdir('..')
     pygame.init()
     pygame.display.set_mode()

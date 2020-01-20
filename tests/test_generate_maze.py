@@ -8,10 +8,9 @@ fixture()
 
 
 def test_generate_maze():
+    """Test if path and wall size is correct"""
     maze = Maze(DEFAULT_FILE)
 
     assert len(maze.path) == 111
 
     assert len(maze.wall) == 112
-
-

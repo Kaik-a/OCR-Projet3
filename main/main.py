@@ -1,10 +1,10 @@
 """File to launch in order to play MacGyver's maze game."""
 
 from os import chdir
+from time import sleep
 
 import pygame
-from pygame.locals import *
-from time import sleep
+import pygame.locals
 
 from config import ITEM_TO_WIN, WINDOW_SIZE, MACGYVER_PICTURE, WINDOW_TITLE
 from model.level import Level
@@ -16,7 +16,7 @@ chdir('..')
 
 def main():
     """Launch the game."""
-    pygame.init()
+    pygame.init()  # pylint: disable=maybe-no-member
     window = pygame.display.set_mode((WINDOW_SIZE, WINDOW_SIZE))
 
     icon = pygame.image.load(MACGYVER_PICTURE)
@@ -30,16 +30,17 @@ def main():
     while 1:
         pygame.time.Clock().tick(30)
         for event in pygame.event.get():
-            if event.type == QUIT:
+            # pylint: disable=maybe-no-member
+            if event.type == pygame.locals.QUIT:
                 return
-            elif event.type == KEYDOWN:
-                if event.key == K_RIGHT:
+            elif event.type == pygame.locals.KEYDOWN:
+                if event.key == pygame.locals.K_RIGHT:
                     level.macgyver.move('right', level.maze)
-                elif event.key == K_LEFT:
+                elif event.key == pygame.locals.K_LEFT:
                     level.macgyver.move('left', level.maze)
-                elif event.key == K_DOWN:
+                elif event.key == pygame.locals.K_DOWN:
                     level.macgyver.move('down', level.maze)
-                elif event.key == K_UP:
+                elif event.key == pygame.locals.K_UP:
                     level.macgyver.move('up', level.maze)
 
             if showdown:

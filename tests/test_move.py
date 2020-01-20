@@ -8,6 +8,7 @@ fixture()
 
 
 def test_move():
+    """test if macgyver can move correctly"""
     from unittest import mock
     with mock.patch('model.maze') as mock:
         maze = mock.return_value
