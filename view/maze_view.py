@@ -3,7 +3,7 @@ Module to realize the display of the maze
 """
 import pygame
 from model.maze import Maze
-from config import SPRITE_SHEET, SPRITE_SIZE
+from config import SPRITE_SHEET
 from view.image_loading import resize
 
 

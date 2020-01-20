@@ -1,22 +1,22 @@
 """This module is set to implement MacGyver inside the maze."""
 from operator import add
+
 import pygame
-from config import MACGYVER_PICTURE, SPRITE_SIZE
-from view.image_loading import load_image
+
+from config import SPRITE_SIZE
+from model.game_object import GameObject
 from model.maze import Maze
 
 
-class MacGyver(pygame.sprite.Sprite):
+class MacGyver(GameObject):
     """
     This class is set to represent our hero, macguyver, his methods and
     attributes.
     """
 
-    def __init__(self, position):
-        pygame.sprite.Sprite.__init__(self)
-        self.position = position
+    def __init__(self, picture: pygame.image, position: tuple):
+        super(MacGyver, self).__init__(position=position, picture=picture)
         self.item_count = 0
-        self.picture = load_image(MACGYVER_PICTURE)
 
     def move(self, direction: str, maze: Maze):
         """
