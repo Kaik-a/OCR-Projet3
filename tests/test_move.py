@@ -2,7 +2,7 @@
 
 from model.macgyver import MacGyver
 from tests.fixture import fixture
-from config import SPRITE_SIZE
+from config import SPRITE_SIZE, MACGYVER_PICTURE
 
 fixture()
 
@@ -16,7 +16,7 @@ def test_move():
                      (0, SPRITE_SIZE),
                      (SPRITE_SIZE, SPRITE_SIZE)]
 
-        macgyver = MacGyver((0, 0))
+        macgyver = MacGyver(position=(0, 0), picture=MACGYVER_PICTURE)
 
         macgyver.move('right', maze)
 

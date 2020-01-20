@@ -1,18 +1,24 @@
 """
 This class is set to generate the maze from a file
 """
-import pygame
+
 from random import choice
-from model.item import Item
-from view.image_loading import load_image
-from config import ETHER_PICTURE, SPRITE_SIZE, SYRINGE_PICTURE, TUBE_PICTURE
+
+from pygame import sprite
+
+import config
+from model.game_object import GameObject
+
+item_pictures = [config.ETHER_PICTURE,
+                 config.SYRINGE_PICTURE,
+                 config.TUBE_PICTURE]
 
 
-class Maze(pygame.sprite.Sprite):
+class Maze(sprite.Sprite):
     """This class reprensents the maze in the game. """
 
     def __init__(self, file):
-        pygame.sprite.Sprite.__init__(self)
+        super(Maze, self).__init__()
         self.wall = []
         self.path = []
         self.start = (0, 0)
@@ -20,7 +26,7 @@ class Maze(pygame.sprite.Sprite):
         self.finish = (0, 0)
         self.items = []
         self.generate_maze(file)
-        while len(self.items) < 3:
+        while len(self.items) < config.ITEM_TO_WIN:
             self.item_at_random_location()
 
     def generate_maze(self, file):
@@ -56,14 +62,12 @@ class Maze(pygame.sprite.Sprite):
                             self.guardian = (x, y)
                         elif sprite == 'f':
                             self.finish = (x, y)
-                    x += SPRITE_SIZE
+                    x += config.SPRITE_SIZE
                 x = 0
-                y += SPRITE_SIZE
+                y += config.SPRITE_SIZE
 
     def item_at_random_location(self):
         """This method is set to find a random location for the three items. """
-
-        item_pictures = [ETHER_PICTURE, SYRINGE_PICTURE, TUBE_PICTURE]
 
         item_location = choice(self.path)
         # we avoid start and guardian location
@@ -72,14 +76,14 @@ class Maze(pygame.sprite.Sprite):
             self.item_at_random_location()
         else:
             if self.items:
-                # we avoid other item position
+                # we avoid other items position
                 for item in self.items:
                     if item_location in item.position:
                         self.item_at_random_location()
-                self.items.append(Item(item_location))
+                self.items.append(GameObject
+                                  (picture=item_pictures[len(self.items)],
+                                   position=item_location))
             else:
-                self.items.append(Item(item_location))
-
-        # we load an image for each item in list
-        for item in self.items:
-            item.picture = load_image(item_pictures.pop())
+                self.items.append(GameObject
+                                  (picture=item_pictures[len(self.items)],
+                                   position=item_location))

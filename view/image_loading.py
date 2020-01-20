@@ -17,7 +17,8 @@ def load_image(image_file):
 
 def resize(sprite):
     try:
-        sized_sprite = pygame.transform.scale(sprite, (SPRITE_SIZE, SPRITE_SIZE))
+        sized_sprite = pygame.transform.scale(sprite,
+                                              (SPRITE_SIZE, SPRITE_SIZE))
 
     except pygame.error as message:
         raise SystemExit(message)

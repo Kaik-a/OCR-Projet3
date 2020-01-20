@@ -6,14 +6,12 @@ import pygame
 from pygame.locals import *
 from time import sleep
 
-from config import WINDOW_SIZE, MACGYVER_PICTURE, WINDOW_TITLE
+from config import ITEM_TO_WIN, WINDOW_SIZE, MACGYVER_PICTURE, WINDOW_TITLE
 from model.level import Level
 from view.maze_view import create_maze_view
 from view.item_count_display import display_item_count
 
 chdir('..')
-
-# TODO: Check python path for main and tests
 
 
 def main():
@@ -48,8 +46,8 @@ def main():
                 return
 
             if level.macgyver.position == level.guardian.position:
-                showdown = level.guardian.block_exit(level.macgyver)
-                level.result(showdown)
+                level.result(level.macgyver.item_count == ITEM_TO_WIN)
+                showdown = 'done'
 
             create_maze_view(level.maze, window)
 
