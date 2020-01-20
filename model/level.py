@@ -8,9 +8,10 @@ from model.game_object import GameObject
 from view.image_loading import load_image
 
 
-
 class Level:
-    """Main class of the game who permits to link maze, macgyver and guardian"""
+    """
+    Main class of the game who permits to link maze, macgyver and guardian
+    """
     def __init__(self):
         self.maze = Maze(file=config.DEFAULT_FILE)
         self.guardian = GameObject(picture=config.GUARDIAN_PICTURE,
@@ -26,6 +27,3 @@ class Level:
             self.guardian.picture = load_image(config.RIP_PICTURE)
         elif asleep_guardian is False:
             self.macgyver.picture = load_image(config.RIP_PICTURE)
-
-
-

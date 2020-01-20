@@ -5,8 +5,7 @@ from view.image_loading import load_image
 
 
 def test_unknown_image():
+    """test if image doesn't exist"""
     with raises(SystemExit) as excinfo:
         load_image('ressource/Images/unknown_file.png')
     assert "Couldn't open" in str(excinfo.value)
-
-
