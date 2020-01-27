@@ -16,5 +16,5 @@ def display_item_count(window: pygame.display, level: Level):
     if level.macgyver.item_count < 3:
         text = font.render(f'Item: {level.macgyver.item_count}/3', True, green)
     else:
-        text = font.render('Syringe ready', True, green)
+        text = font.render('Syringe ready!', True, green)
     window.blit(text, (0, WINDOW_SIZE - SPRITE_SIZE // 2))
