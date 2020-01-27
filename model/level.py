@@ -1,5 +1,5 @@
 """In order to play the game, a level is created taking in parameters an
-instance of a maze and a macgyver"""
+instance of a maze, a guardian and a macgyver"""
 
 import config
 from model.macgyver import MacGyver
@@ -20,8 +20,12 @@ class Level:
                                  position=self.maze.start)
 
     def result(self, asleep_guardian: bool):
-        """If macgyver have all three items, showdown contain vitory he fails
-        otherwise"""
+        """
+        If macgyver have all three items, it's a vitory. He fails
+        otherwise
+
+        :param asleep_guardian: if macgyver have all items it's true
+        """
         if asleep_guardian is True:
             self.macgyver.position = self.maze.finish
             self.guardian.picture = load_image(config.RIP_PICTURE)

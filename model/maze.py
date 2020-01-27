@@ -11,7 +11,6 @@ import config
 from model.game_object import GameObject
 
 item_pictures = [config.ETHER_PICTURE,
-                 config.SYRINGE_PICTURE,
                  config.TUBE_PICTURE,
                  config.NEEDLE_PICTURE]
 
@@ -35,8 +34,7 @@ class Maze(sprite.Sprite):
         """This method allows us to create a maze from a file located in mazes's
         directory.
 
-        Args:
-            file: file containing maze structure's
+        :param file: file containing maze structure's
 
         In file:
             s: start

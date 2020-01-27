@@ -22,9 +22,8 @@ class MacGyver(GameObject):
         """
         This methods gives the ability to MacGyver to move inside the maze.
 
-        Args:
-            direction: the direction where MacGyver is trying to move
-            maze: the maze from where MacGyver is trying to escape
+        :param direction: the direction where MacGyver is trying to move
+        :param maze: the maze from where MacGyver is trying to escape
         """
 
         move = (0, 0)
