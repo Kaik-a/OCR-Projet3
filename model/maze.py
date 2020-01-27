@@ -11,7 +11,6 @@ import config
 from model.game_object import GameObject
 
 item_pictures = [config.ETHER_PICTURE,
-                 config.SYRINGE_PICTURE,
                  config.TUBE_PICTURE,
                  config.NEEDLE_PICTURE]
 
