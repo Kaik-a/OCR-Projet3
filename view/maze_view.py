@@ -8,7 +8,11 @@ from view.image_loading import resize
 
 
 def create_maze_view(maze: Maze, window: pygame.display.set_mode()):
-    """Make pygame visual for the maze."""
+    """Make pygame visual for the maze.
+
+    :param maze: Maze to display
+    :param window: Window used to display the maze
+    """
     sprite_sheet = pygame.image.load(SPRITE_SHEET)
     # load sprite image for walls
     sprite_sheet.set_clip(pygame.Rect(40, 0, 20, 20))
