@@ -26,8 +26,8 @@ class Level:
 
         :param asleep_guardian: if macgyver have all items it's true
         """
-        if asleep_guardian is True:
+        if asleep_guardian:
             self.macgyver.position = self.maze.finish
             self.guardian.picture = load_image(config.RIP_PICTURE)
-        elif asleep_guardian is False:
+        else:
             self.macgyver.picture = load_image(config.RIP_PICTURE)

@@ -1,6 +1,5 @@
 """File to launch in order to play MacGyver's maze game."""
 
-from os import chdir
 from time import sleep
 
 import pygame
@@ -10,8 +9,6 @@ from config import ITEM_TO_WIN, WINDOW_SIZE, MACGYVER_PICTURE, WINDOW_TITLE
 from model.level import Level
 from view.maze_view import create_maze_view
 from view.item_count_display import display_item_count
-
-chdir('..')
 
 
 def main():
